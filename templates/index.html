@@ -23,7 +23,13 @@
      <a href="/new_item">Uusi resepti</a>
   </p>
 
-  <h2>Kaikki reseptit</h2>
+  <h2>Kaikki reseptit<h2>
+
+  <ul>
+    {% for item in items %}
+    <li><a href="/item/{{item.id}}">{{item.title }}</a></li>
+    {% endfor %}
+    </ul>
 
 </body>
 
