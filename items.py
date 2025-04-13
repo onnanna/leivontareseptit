@@ -13,6 +13,7 @@ def get_all_classes():
     return classes
 
 def add_item(title, description, user_id, classes):
+
     sql = """INSERT INTO items (title, description, user_id)
             VALUES (?, ?, ?)"""
 
