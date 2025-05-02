@@ -44,6 +44,7 @@ def show_item(item_id):
         abort(404)
     classes = items.get_classes(item_id)
     comments = items.get_comments(item_id)
+
     return render_template("show_item.html", item=item, classes=classes, comments=comments)
 
 @app.route("/new_item")
@@ -56,16 +57,15 @@ def new_item():
 def create_comment():
     require_login()
 
-    description = request.form["description"]
-    if not description or len(description) > 1000:
+    note = request.form["note"]
+    if not note or len(note) > 1000:
         abort(403)
     item_id = request.form["item_id"]
     item = items.get_item(item_id)
     if not item:
         abort(403)
     user_id = session["user_id"]
-
-    items.add_comment(item_id, user_id, description)
+    items.add_comment(item_id, user_id, note)
 
     return redirect("/item/" + str(item_id))
 
@@ -85,6 +85,7 @@ def create_item():
     all_classes = items.get_all_classes()
 
     classes = []
+
     for entry in request.form.getlist("classes"):
         if entry:
             class_title, class_value = entry.split(":")
@@ -101,6 +102,7 @@ def create_item():
 @app.route("/edit_item/<int:item_id>")
 def edit_item(item_id):
     require_login()
+
     item = items.get_item(item_id)
     if not item:
         abort(404)
@@ -119,6 +121,7 @@ def edit_item(item_id):
 @app.route("/remove_item/<int:item_id>", methods=["GET", "POST"])
 def remove_item(item_id):
     require_login()
+
     item = items.get_item(item_id)
     if not item:
         abort(404)
@@ -138,6 +141,7 @@ def remove_item(item_id):
 @app.route("/update_item", methods=["POST"])
 def update_item():
     require_login()
+
     item_id = request.form["item_id"]
     item = items.get_item(item_id)
     if not item:
@@ -167,7 +171,6 @@ def update_item():
     items.update_item(item_id, title, description, classes)
 
     return redirect("/item/" + str(item_id))
-
 
 @app.route("/register")
 def register():

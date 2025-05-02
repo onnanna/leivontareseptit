@@ -33,17 +33,18 @@
     {% endif %}
     <h2>Kommentit</h2>
     <ul>
-    {% for comment in comments %}
-    <li>{{ comment.description}} <a href="">{{ comment.username }} </a></li>
+     {% for comment in comments %}
+    <li>{{ comment.note}}, <a href="/user/{{comment.user_id}}">{{ comment.username }} </a></li>
       {% endfor %}
-      </ul>
+    </ul>
     <h2>Uusi kommentti</h2>
     <form action="/create_comment" method="post">
       Kommentti: <br />
-      <textarea name="description" rows="8" cols="60" maxlength="1000" required></textarea>
-      <input type="hidden" name="item_id" value="{{ item_id }}">
+      <textarea type="text" name="note" rows="8" cols="60" maxlength="1000" required></textarea> />
+      <input type="hidden" name="item_id" value="{{ item.id }}">
       <p>
       <input type="submit" value="Kommentoi" />
+    </form>
     <p>
     <a href="/">Takaisin</a>
   </p>
