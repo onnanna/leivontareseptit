@@ -3,7 +3,8 @@
 {% block title %}Leivonnaisen kuvat{% endblock %}
 
 {% block content %}
-<h2>Leivonnaisesta kuvia</h2>
+<h2>{{ item.title }}</h2>
+<h3>Leivonnaisesta kuvia</h3>
 
 <p>
   Leivonnaisesta on {{ images | count }} kuvaa.
@@ -21,7 +22,7 @@
   <input type="submit" value="Poista valitut" />
 </form>
 
-<h2>Lisää uusi kuva</h2>
+<h4>Lisää uusi kuva</h4>
 <form action="/add_image" method="post" enctype="multipart/form-data">
   <p>
     Kuva: <input type="file" name="image" accept=".png" />
@@ -31,7 +32,7 @@
 </form>
 
 
-  <p>
-  <a href="/item/{{ item.id }}">Takaisin</a>
+<p>
+  <a href="/item/{{ item.id }}"> Takaisin reseptiin</a>
 </p>
 {% endblock %}
