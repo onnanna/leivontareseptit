@@ -1,39 +1,15 @@
-<!DOCTYPE html>
-<html>
+{% extends "layout.html" %}
 
-<head>
-  <title>Leivontareseptit</title>
-</head>
+{% block title %}Leivontareseptit{% endblock %}
 
-<body>
-  <h1>Leivontareseptit</h1>
+{% block content %}
 
-  {% if session.username %}
-  <p>
-    Olet kirjautunut nimellä {{ session.username }}
-  <p/>
-  {% endif %}
+<h2>Kaikki reseptit<h2>
 
-  <p>
-    <a href="/find_item">Etsi resepti</a> |
-      {% if session.user_id %}
-      <a href="/new_item">Uusi resepti</a> |
-      <a href="/logout">Kirjaudu ulos</a>
-    {% else %}
-      <a href="/login">Kirjaudu sisään</a> |
-      <a href="/register">Luo tunnus</a>
-  {% endif %}
+<ul>
+  {% for item in items %}
+  <li><a href="/item/{{item.id}}">{{item.title }}</a></li>
+  {% endfor %}
+</ul>
 
-  </p>
-
-  <h2>Kaikki reseptit<h2>
-
-  <ul>
-    {% for item in items %}
-    <li><a href="/item/{{item.id}}">{{item.title }}</a></li>
-    {% endfor %}
-    </ul>
-
-</body>
-
-</html>
+{% endblock %}
