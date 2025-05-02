@@ -77,7 +77,7 @@ def create_comment():
     user_id = session["user_id"]
 
     if not any(char.isalpha() for char in note):
-        flash("VIRHE: Kommentissä täytyy olla kirjaimia")
+        flash("VIRHE: kommentissä täytyy olla kirjaimia")
         return redirect("/item/" + str(item_id))
 
     items.add_comment(item_id, user_id, note)
