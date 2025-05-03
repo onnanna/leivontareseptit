@@ -1,3 +1,4 @@
+import re
 import secrets
 import sqlite3
 
@@ -98,7 +99,6 @@ def create_comment():
         return redirect("/item/" + str(item_id))
 
     items.add_comment(item_id, user_id, note)
-
     return redirect("/item/" + str(item_id))
 
 
@@ -116,7 +116,6 @@ def create_item():
     user_id = session["user_id"]
 
     all_classes = items.get_all_classes()
-
     classes = []
 
     for entry in request.form.getlist("classes"):
@@ -248,8 +247,8 @@ def update_item():
         abort(403)
 
     all_classes = items.get_all_classes()
-
     classes = []
+
     for entry in request.form.getlist("classes"):
         if entry:
             class_title, class_value = entry.split(":")
