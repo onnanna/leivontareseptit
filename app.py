@@ -130,7 +130,7 @@ def create_item():
     items.add_item(title, description, user_id, classes)
     item_id = db.last_insert_id()
 
-    return redirect("/item/" + str(item_id))
+    return redirect("/")
 
 @app.route("/edit_item/<int:item_id>")
 def edit_item(item_id):
@@ -226,7 +226,8 @@ def remove_item(item_id):
         if "remove" in request.form:
             items.remove_item(item_id)
             return redirect("/")
-        return redirect("/item/" + str(item_id))
+        else:
+            return redirect("/item/" + str(item_id))
 
 @app.route("/update_item", methods=["POST"])
 def update_item():

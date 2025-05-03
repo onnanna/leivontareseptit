@@ -1,4 +1,3 @@
-from flask import redirect
 import db
 
 def get_all_classes():
@@ -22,9 +21,6 @@ def add_item(title, description, user_id, classes):
     sql = "INSERT INTO item_classes (item_id, title, value) VALUES (?, ?, ?)"
     for class_title, class_value in classes:
         db.execute(sql, [item_id, class_title, class_value])
-
-    return redirect("/items/" + str(item_id))
-
 
 def add_comment(item_id, user_id, note):
     sql = "INSERT INTO comments (item_id, user_id, note) VALUES (?, ?, ?)"
@@ -81,7 +77,6 @@ def get_item(item_id):
             WHERE items.user_id = users.id AND
                   items.id = ?"""
     result = db.query(sql, [item_id])
-
     return result[0] if result else None
 
 def update_item(item_id, title, description, classes):

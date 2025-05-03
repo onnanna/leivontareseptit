@@ -7,7 +7,9 @@
 </head>
 
 <body>
-  <h1>Leivontareseptit</h1>
+  <div class="header">
+    <h1>Leivontareseptit</h1>
+  </div>
 
   {% if session.user_id %}
   <p>
@@ -16,6 +18,7 @@
   {% endif %}
 
   <p>
+  <div class="nav">
     <a href="/">Etusivu</a> |
     <a href="/find_item">Etsi resepti</a> |
     {% if session.user_id %}
@@ -25,6 +28,7 @@
       <a href="/login">Kirjaudu sisään</a> |
       <a href="/register">Luo tunnus</a>
   {% endif %}
+  </div>
 
   </p>
 
