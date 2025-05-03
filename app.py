@@ -1,4 +1,3 @@
-import re
 import secrets
 import sqlite3
 
@@ -40,8 +39,8 @@ def show_user(user_id):
     user = users.get_user(user_id)
     if not user:
         abort(404)
-    items = users.get_items(user_id)
-    return render_template("show_user.html", user=user, items=items)
+    user_items = users.get_items(user_id)
+    return render_template("show_user.html", user=user, items=user_items)
 
 @app.route("/find_item")
 def find_item():
@@ -61,7 +60,8 @@ def show_item(item_id):
     classes = items.get_classes(item_id)
     comments = items.get_comments(item_id)
     images = items.get_images(item_id)
-    return render_template("show_item.html", item=item, classes=classes, comments=comments, images=images)
+    return render_template("show_item.html", item=item, classes=classes,
+                           comments=comments, images=images)
 
 @app.route("/image/<int:image_id>")
 def show_image(image_id):
@@ -227,8 +227,7 @@ def remove_item(item_id):
         if "remove" in request.form:
             items.remove_item(item_id)
             return redirect("/")
-        else:
-            return redirect("/item/" + str(item_id))
+        return redirect("/item/" + str(item_id))
 
 @app.route("/update_item", methods=["POST"])
 def update_item():

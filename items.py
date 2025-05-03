@@ -1,5 +1,5 @@
-import db
 from flask import redirect
+import db
 
 def get_all_classes():
     sql = "SELECT title, value FROM classes ORDER BY id"
