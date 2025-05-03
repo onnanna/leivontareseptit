@@ -1,6 +1,6 @@
 # leivontareseptit
 
-Sovelluksessa käyttäjät pääsevät jakamaan suosikkireseptejä muiden käyttäjien kanssa. Leivontareseptejä pääsee kommentoimaan, kertoa miten itsellä sujui reseptin leipominen tai pyytää vinkkejä leivonnassa onnistumiseen.
+Sovelluksessa käyttäjät pääsevät jakamaan suosikkireseptejä muiden käyttäjien kanssa. Leivontareseptejä pääsee kommentoimaan, kertomaan miten itsellä sujui reseptin leipominen tai pyytää vinkkejä leivonnassa onnistumiseen.
 
 ## Sovelluksen toiminnot
 
