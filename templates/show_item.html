@@ -30,7 +30,7 @@
 <h3>Kommentit</h3>
 <ul>
   {% for comment in comments %}
-  <li>{{ comment.note}}, <a href="/user/{{comment.user_id}}">{{ comment.username }} </a></li>
+  <li>{{ comment.note | show_lines }}, <a href="/user/{{comment.user_id}}">{{ comment.username }} </a></li>
   {% endfor %}
 </ul>
 {% if session.user_id %}
